@@ -1,0 +1,14 @@
+{ "columns":12,
+ "image":"..\/images\/FONDO.png",
+ "imageheight":620,
+ "imagewidth":400,
+ "margin":0,
+ "name":"fondo",
+ "spacing":0,
+ "tilecount":228,
+ "tiledversion":"1.10.1",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":"1.10"
+}

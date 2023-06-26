@@ -5,18 +5,18 @@ import GameOver from "./src/scenes/GameOver.js";
 // Create a new Phaser config object
 const config = {
   type: Phaser.AUTO,
-  width: 600,
-  height: 750,
+  width: 400,
+  height: 620,
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
     min: {
-      width: 600,
-      height: 750,
+      width: 400,
+      height: 620,
     },
     max: {
-      width: 1200,
-      height: 1500,
+      width: 400,
+      height: 1240,
     },
   },
   physics: {

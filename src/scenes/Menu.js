@@ -16,9 +16,8 @@ export default class Menu extends Phaser.Scene {
 
   create() {
     // create game objects
-    this.add.image(300, 600, "fondo").setScale(5);
-    this.add.image(300, 600, "pj").setScale(5);
-    this.menuText = this.add.text(155, 100, "HASTA LA LUNA", {
+    this.add.image(200, 310, "menu");
+    this.menuText = this.add.text(50, 215, "HASTA LA LUNA", {
       fontSize: "40PX",
       fill: "#E0CDF8",
       textAlign: "center",
@@ -26,24 +25,21 @@ export default class Menu extends Phaser.Scene {
 
     //boton de jugar
     const button = this.add
-      .text(170, 400, "Jugar", {
+      .text(140, 550, "Jugar", {
         fontSize: "40px",
         fill: "0000",
       })
       .setInteractive();
 
     button.on("pointerover", () => {
-      button.setBackgroundColor("#F9EBA");
       this.game.canvas.style.cursor = "pointer";
     });
 
     button.on("pointerout", () => {
-      button.setBackgroundColor("#D9880");
       this.game.canvas.style.cursor = "default";
     });
 
     button.on("pointerdown", () => {
-      button.setBackgroundColor("#C0392B");
       this.game.canvas.style.cursor = "default";
       this.scene.start("game");
     });
