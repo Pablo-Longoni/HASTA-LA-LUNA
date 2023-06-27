@@ -1,5 +1,3 @@
-# Phaser 3 Template
+# Hasta La Luna
 
-Plantilla para iniciar nuevos proyectos con PHASER 3.
-
-Contiene configuración inicial y buenas prácticas de estructuras de carpetas.
+Trabajo Final de programacion - Juego "Hasta la luna" 
