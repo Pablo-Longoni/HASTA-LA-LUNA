@@ -24,6 +24,7 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("obstaculo","public/images/obstaculo.png");
     this.load.image("trampolin","public/images/trampolin.png");
     this.load.image("pausa","public/images/pausa.png");
+    this.load.audio("music", "public/music/music.wav");
   }
 
   create() {
@@ -43,6 +44,9 @@ export default class Precarga extends Phaser.Scene {
       frameRate: 10,
       repeat: 1,
     });*/
+
+    this.music = this.sound.add("music", { loop: true});
+    this.music.play();
   }
 
   update() {
