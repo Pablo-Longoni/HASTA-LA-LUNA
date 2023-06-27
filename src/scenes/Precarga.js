@@ -30,19 +30,19 @@ export default class Precarga extends Phaser.Scene {
     // create game objects
      //  Our player animations, turning, walking left and walking right.
     // se crea una sola vez, para que no de error en el restart de la escena
-    this.anims.create({
+   /* this.anims.create({
       key: "jump_left",
       frames: this.anims.generateFrameNumbers("pj", { start:4, end: 0}),
       frameRate: 10, 
       repeat: 1,
-    });
+    });*/
   
-    this.anims.create({
+    /*this.anims.create({
       key: "jump_right",
       frames: this.anims.generateFrameNumbers("pj", { start: 5, end: 9 }),
       frameRate: 10,
       repeat: 1,
-    });
+    });*/
   }
 
   update() {
