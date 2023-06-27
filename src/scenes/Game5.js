@@ -181,8 +181,8 @@ export default class Game extends Phaser.Scene {
   esVencedor(jugador, salida) {
     console.log("", this.score);
 
-    const escenasDisponibles = ["game", "game2", "game3", "game4", "game5"];
-    const indiceAleatorio = Phaser.Math.Between(0, 4);
+    const escenasDisponibles = ["game2", "game3", "game4"];
+    const indiceAleatorio = Phaser.Math.Between(0, 2);
     const escenaAleatoria = escenasDisponibles[indiceAleatorio];
   
     this.scene.start(escenaAleatoria, {

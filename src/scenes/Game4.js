@@ -5,10 +5,10 @@ export default class Game extends Phaser.Scene {
     super("game4");
   }
 
-  init() {
+  init(data) {
     this.isGameOver = false;
-    this.score = 0;
-    this.maxScore = 0;
+    this.score = data.score; 
+    this.maxScore  = data.maxScore;
    
   }
 
@@ -182,8 +182,8 @@ export default class Game extends Phaser.Scene {
   esVencedor(jugador, salida) {
     console.log("", this.score);
 
-    const escenasDisponibles = ["game", "game2", "game3", "game4", "game5"];
-    const indiceAleatorio = Phaser.Math.Between(0, 4);
+    const escenasDisponibles = ["game", "game2", "game3", "game4"];
+    const indiceAleatorio = Phaser.Math.Between(0, 3);
     const escenaAleatoria = escenasDisponibles[indiceAleatorio];
   
     this.scene.start(escenaAleatoria, {

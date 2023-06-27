@@ -3,6 +3,8 @@
 export default class Game extends Phaser.Scene {
   constructor() {
     super("game");
+    this.resumeButton = null;
+    this.isPaused = false;
   }
 
   init() {
@@ -122,9 +124,28 @@ export default class Game extends Phaser.Scene {
     //fijar texto
     this.scoreText.setScrollFactor(0);
 
-    //boton de pausa 
+    // Crea el botón de pausa
+    this.pauseButton = this.add.text(300, 15, "Pausa", { fontSize: "20px", fill: "#FFFFFF" })
+      .setInteractive()
+      .on("pointerdown", this.pausarJuego, this);
 
-  
+    // Fija el botón de pausa en la cámara
+    this.pauseButton.setScrollFactor(0);
+
+    // Crea la imagen de pausa con el botón de reanudar
+    this.pausa = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, "public/images/pausa.png").setInteractive();
+    this.resumeButton = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY, "REANUDAR", {
+      fontSize: "40px",
+      fill: "#E0CDF8",
+    }).setOrigin(0.5).setInteractive();
+
+    // Oculta la imagen de pausa y el botón de reanudar inicialmente
+    this.pausa.setVisible(false);
+    this.resumeButton.setVisible(false);
+
+    // Configura el evento de clic para el botón de reanudar
+    this.resumeButton.on("pointerdown", this.reanudarJuego, this);
+
 
   }
 
@@ -159,7 +180,45 @@ export default class Game extends Phaser.Scene {
       this.maxScore = this.score;
     }
 
+  }
 
+  
+  pausarJuego() {
+    if (this.isPaused) return;
+
+    // Pausa la escena actual
+    this.scene.pause();
+
+    // Muestra la imagen de pausa y el botón de reanudar
+    this.pausa.setVisible(true);
+    this.resumeButton.setVisible(true);
+
+    // Desactiva el botón de pausa para evitar que se haga clic mientras el juego está pausado
+    this.pauseButton.disableInteractive();
+
+    // Actualiza el estado de pausa
+    this.isPaused = true;
+
+    console.log("Juego pausado");
+  }
+
+  reanudarJuego() {
+    if (!this.isPaused) return;
+
+    // Reanuda la escena pausada
+    this.scene.resume();
+
+    // Oculta la imagen de pausa y el botón de reanudar
+    this.pausa.setVisible(false);
+    this.resumeButton.setVisible(false);
+
+    // Activa el botón de pausa nuevamente
+    this.pauseButton.setInteractive();
+
+    // Actualiza el estado de pausa
+    this.isPaused = false;
+
+    console.log("Juego reanudado");
   }
 
   trampolinSalto(jugador, trampolin){
@@ -182,8 +241,8 @@ export default class Game extends Phaser.Scene {
   esVencedor(jugador, salida) {
     console.log("", this.score);
 
-    const escenasDisponibles = ["game", "game2", "game3", "game4"];
-    const indiceAleatorio = Phaser.Math.Between(0, 3);
+    const escenasDisponibles = [ "game2", "game3", "game4"];
+    const indiceAleatorio = Phaser.Math.Between(0, 2);
     const escenaAleatoria = escenasDisponibles[indiceAleatorio];
   
     this.scene.start(escenaAleatoria, {

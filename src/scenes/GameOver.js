@@ -35,7 +35,7 @@ export default class GameOver extends Phaser.Scene {
     });
 
     //boton de volver a jugar
-    const button = this.add.text(20, 550, "VOLVER A JUGAR", {
+    const button = this.add.text(20, 450, "VOLVER A JUGAR", {
         fontSize: "40px",
         fill: "#E0CDF8",
       })
