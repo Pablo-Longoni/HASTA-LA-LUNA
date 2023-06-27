@@ -2,6 +2,10 @@ import Menu from "./src/scenes/Menu.js";
 import Precarga from "./src/scenes/Precarga.js";
 import Game from "./src/scenes/Game.js";
 import GameOver from "./src/scenes/GameOver.js";
+import Game2 from "./src/scenes/Game2.js";
+import Game3 from "./src/scenes/Game3.js";
+import Game4 from "./src/scenes/Game4.js";
+import Game5 from "./src/scenes/Game5.js";
 // Create a new Phaser config object
 const config = {
   type: Phaser.AUTO,
@@ -23,13 +27,13 @@ const config = {
     default: "arcade",
     arcade: {
       gravity: { y: 200 },
-      debug: true,
+      debug: false,
     },
   },
   // List of scenes to load
   // Only the first scene will be shown
   // Remember to import the scene before adding it to the list
-  scene: [Precarga, Menu, Game, GameOver],
+  scene: [Precarga, Menu, Game, Game2, Game3, Game4, Game5,  GameOver],
 };
 
 // Create a new Phaser game instance

@@ -10,12 +10,20 @@ export default class Precarga extends Phaser.Scene {
   preload() {
     // load assets
 
-    this.load.tilemapTiledJSON("mapa1", "public/tilemap/mapa1.json");
+    
+    this.load.tilemapTiledJSON("mapa2","public/tilemap/mapa2.json");
+    this.load.tilemapTiledJSON("mapa3","public/tilemap/mapa3.json");
+    this.load.tilemapTiledJSON("mapa4","public/tilemap/mapa4.json");
+    this.load.tilemapTiledJSON("mapa5","public/tilemap/mapa5.json");
+    this.load.tilemapTiledJSON("mapa6","public/tilemap/mapa6.json");
     this.load.image("tile", "public/images/tile.png");
     this.load.image("fondo", "public/images/fondo.png");
-    this.load.image("obstaculo", "./public/images/obstaculo.png");
+    this.load.image("nube", "./public/images/nube.png");
     this.load.spritesheet("pj", "public/images/pj.png", { frameWidth: 64, frameHeight: 64});
     this.load.image("menu", "public/images/menu.png");
+    this.load.image("obstaculo","public/images/obstaculo.png");
+    this.load.image("trampolin","public/images/trampolin.png");
+    this.load.image("pausa","public/images/pausa.png");
   }
 
   create() {
@@ -24,16 +32,16 @@ export default class Precarga extends Phaser.Scene {
     // se crea una sola vez, para que no de error en el restart de la escena
     this.anims.create({
       key: "jump_left",
-      frames: this.anims.generateFrameNumbers("pj", { frames: [ 0, 1, 2, 3, 4 ] }),
+      frames: this.anims.generateFrameNumbers("pj", { start:4, end: 0}),
       frameRate: 10, 
-      repeat: -1,
+      repeat: 1,
     });
   
     this.anims.create({
       key: "jump_right",
       frames: this.anims.generateFrameNumbers("pj", { start: 5, end: 9 }),
       frameRate: 10,
-      repeat: -1,
+      repeat: 1,
     });
   }
 

@@ -25,9 +25,9 @@ export default class Menu extends Phaser.Scene {
 
     //boton de jugar
     const button = this.add
-      .text(140, 550, "Jugar", {
+      .text(240, 450, "JUGAR", {
         fontSize: "40px",
-        fill: "0000",
+        fill: "#E0CDF8",
       })
       .setInteractive();
 

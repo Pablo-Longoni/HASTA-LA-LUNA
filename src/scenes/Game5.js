@@ -2,22 +2,21 @@
 
 export default class Game extends Phaser.Scene {
   constructor() {
-    super("game");
+    super("game5");
   }
 
-  init() {
+  init(data) {
     this.isGameOver = false;
-    this.score = 0;
-    this.maxScore = 0;
+    this.score = data.score; 
+    this.maxScore  = data.maxScore;
    
   }
-
   preload() {
     // cargar los recursos
   }
 
   create() {
-    const map = this.make.tilemap({ key: "mapa2" });
+    const map = this.make.tilemap({ key: "mapa5" });
 
     // Parameters are the name you gave the tileset in Tiled and then the key of the tileset image in
     // Phaser's cache (i.e. the name you used in preload)
@@ -51,9 +50,9 @@ export default class Game extends Phaser.Scene {
     console.log("spawn point salida ", spawnPoint);
     this.salida = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, "nube").setScale(0.1);
 
-    spawnPoint = map.findObject("objetos", (obj) => obj.name === "trampolin");
-    console.log("spawn point trampolin ", spawnPoint);
-    this.trampolin = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, "trampolin");
+   // spawnPoint = map.findObject("objetos", (obj) => obj.name === "trampolin");
+   // console.log("spawn point trampolin ", spawnPoint);
+   // this.trampolin = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, "trampolin");
 
     spawnPoint = map.findObject("objetos", (obj) => obj.name === "obstaculo");
     console.log("spawn point obstaculo ", spawnPoint);
@@ -182,8 +181,8 @@ export default class Game extends Phaser.Scene {
   esVencedor(jugador, salida) {
     console.log("", this.score);
 
-    const escenasDisponibles = ["game", "game2", "game3", "game4"];
-    const indiceAleatorio = Phaser.Math.Between(0, 3);
+    const escenasDisponibles = ["game", "game2", "game3", "game4", "game5"];
+    const indiceAleatorio = Phaser.Math.Between(0, 4);
     const escenaAleatoria = escenasDisponibles[indiceAleatorio];
   
     this.scene.start(escenaAleatoria, {
