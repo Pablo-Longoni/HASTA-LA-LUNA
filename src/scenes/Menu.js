@@ -17,18 +17,10 @@ export default class Menu extends Phaser.Scene {
   create() {
     // create game objects
     this.add.image(200, 310, "menu");
-    this.menuText = this.add.text(50, 215, "HASTA LA LUNA", {
-      fontSize: "40PX",
-      fill: "#E0CDF8",
-      textAlign: "center",
-    });
+  
 
     //boton de jugar
-    const button = this.add
-      .text(240, 450, "JUGAR", {
-        fontSize: "40px",
-        fill: "#E0CDF8",
-      })
+    const button = this.add.image(290, 450, "jugar")
       .setInteractive();
 
     button.on("pointerover", () => {

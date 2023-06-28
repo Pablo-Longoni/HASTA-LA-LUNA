@@ -64,11 +64,7 @@ export default class Game extends Phaser.Scene {
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    //agregado de fisicas
-    
-
-  
-   
+    //agregado de fisicas      
     this.physics.add.collider(this.jugador, plataformaLayer);
     this.physics.add.overlap(
       this.jugador,
@@ -110,7 +106,7 @@ export default class Game extends Phaser.Scene {
     );
 
     //agregar texto
-    this.scoreText = this.add.text(15, 15, "0", { fontSize: "15px", fill: "#FFFFFF" });
+    this.scoreText = this.add.text(15, 15, "0", { fontSize: "20px", fill: "#000000" });
 
     //agregar camara sigue pj
     this.cameras.main.startFollow(this.jugador);
@@ -125,12 +121,12 @@ export default class Game extends Phaser.Scene {
     this.scoreText.setScrollFactor(0);
 
     // Crea el botón de pausa
-    this.pauseButton = this.add.text(300, 15, "Pausa", { fontSize: "20px", fill: "#FFFFFF" })
+   /* this.pauseButton = this.add.text(300, 15, "Pausa", { fontSize: "20px", fill: "#FFFFFF" })
       .setInteractive()
       .on("pointerdown", this.pausarJuego, this);
 
     // Fija el botón de pausa en la cámara
-    this.pauseButton.setScrollFactor(0);
+    this.pauseButton.setScrollFactor(0);*/
 
     // Crea la imagen de pausa con el botón de reanudar
     this.pausa = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, "public/images/pausa.png").setInteractive();
@@ -150,9 +146,9 @@ export default class Game extends Phaser.Scene {
   }
 
   update() {
-    if (this.jugador.y > 10000 ) {
+   /* if (this.jugador.y > 10000 ) {
       this.scene.start("gameOver");
-    }
+    }*/
 
     if (this.cursors.left.isDown) {
       this.jugador.anims.play("jump_left", true);

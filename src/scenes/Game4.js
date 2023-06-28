@@ -108,7 +108,7 @@ export default class Game extends Phaser.Scene {
     );
 
     //agregar texto
-    this.scoreText = this.add.text(15, 15, "0", { fontSize: "15px", fill: "#FFFFFF" });
+    this.scoreText = this.add.text(15, 15, "0", { fontSize: "20px", fill: "#000000" });
 
     //agregar camara sigue pj
     this.cameras.main.startFollow(this.jugador);
