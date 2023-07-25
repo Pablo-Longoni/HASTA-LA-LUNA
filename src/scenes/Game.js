@@ -38,7 +38,7 @@ export default class Game extends Phaser.Scene {
     console.log("spawn point player", objectosLayer);
 
     // crear el jugador
-    // Find in the Object Layer, the name "dude" and get position
+    // Find in the Object Layer, the name "jugador" and get position
     let spawnPoint = map.findObject("objetos", (obj) => obj.name === "jugador");
     console.log(spawnPoint);
 

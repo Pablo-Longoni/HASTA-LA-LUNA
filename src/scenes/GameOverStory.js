@@ -4,7 +4,7 @@ export default class GameOver extends Phaser.Scene {
   constructor() {
     // key of the scene
     // the key will be used to start the scene by other scenes
-    super("gameOver");
+    super("gameOverStory");
   }
 
   init(data) {
@@ -48,7 +48,7 @@ export default class GameOver extends Phaser.Scene {
  
      button.on("pointerdown", () => {
        this.game.canvas.style.cursor = "default";
-       this.scene.start("game");
+       this.scene.start("story");
      });
  
      //boton de volver menu

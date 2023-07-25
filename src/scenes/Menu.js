@@ -19,7 +19,7 @@ export default class Menu extends Phaser.Scene {
     this.add.image(200, 310, "menu");
   
 
-    //boton de jugar
+    //boton de jugar historia
     const button = this.add.image(290, 450, "jugar")
       .setInteractive();
 
@@ -32,6 +32,23 @@ export default class Menu extends Phaser.Scene {
     });
 
     button.on("pointerdown", () => {
+      this.game.canvas.style.cursor = "default";
+      this.scene.start("story");
+    });
+
+    //boton de jugar modo infinito
+    const button2 = this.add.image(290, 550, "jugar")
+      .setInteractive();
+
+    button2.on("pointerover", () => {
+      this.game.canvas.style.cursor = "pointer";
+    });
+
+    button2.on("pointerout", () => {
+      this.game.canvas.style.cursor = "default";
+    });
+
+    button2.on("pointerdown", () => {
       this.game.canvas.style.cursor = "default";
       this.scene.start("game");
     });
