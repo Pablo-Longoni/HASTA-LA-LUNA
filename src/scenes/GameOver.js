@@ -18,20 +18,16 @@ export default class GameOver extends Phaser.Scene {
 
   create() {
     // create game objects
-    this.add.image(200, 310, "fondo");
-    this.gameOverText = this.add.text(60, 85, "PERDISTE", {
-      fontSize: "60px",
-      fill: "#000",
-    });
-
+    this.add.image(200, 310, "gameOver");
+      
     this.add.scoreText = this.add.text(85, 215, "Puntuación:"+this.score,{
       fontSize: "30px",
-      fill:"#000",
+      fill:"#0000",
     });
 
     this.add.maxScoreText = this.add.text(15, 315, "Máxima puntuación:"+this.maxScore,{
       fontSize: "30px",
-      fill:"#000",
+      fill:"#00000",
     });
 
      //boton de volver a jugar

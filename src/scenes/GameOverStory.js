@@ -1,6 +1,6 @@
 // URL to explain PHASER scene: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scene/
 
-export default class GameOver extends Phaser.Scene {
+export default class GameOverStory extends Phaser.Scene {
   constructor() {
     // key of the scene
     // the key will be used to start the scene by other scenes
@@ -18,11 +18,8 @@ export default class GameOver extends Phaser.Scene {
 
   create() {
     // create game objects
-    this.add.image(200, 310, "fondo");
-    this.gameOverText = this.add.text(60, 85, "PERDISTE", {
-      fontSize: "60px",
-      fill: "#000",
-    });
+    this.add.image(200, 310, "gameOver");
+    
 
     this.add.scoreText = this.add.text(85, 215, "Puntuación:"+this.score,{
       fontSize: "30px",

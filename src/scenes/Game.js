@@ -19,6 +19,7 @@ export default class Game extends Phaser.Scene {
   }
 
   create() {
+    
     const map = this.make.tilemap({ key: "mapa2" });
 
     // Parameters are the name you gave the tileset in Tiled and then the key of the tileset image in
@@ -59,9 +60,26 @@ export default class Game extends Phaser.Scene {
 
     spawnPoint = map.findObject("objetos", (obj) => obj.name === "obstaculo");
     console.log("spawn point obstaculo ", spawnPoint);
-    this.obstaculo = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, "obstaculo");
+    
 
+     // Create empty group of starts
+     this.obstaculo = this.physics.add.group();
+     // find object layer
+     // if type is "stars", add to stars group
+     objectosLayer.objects.forEach((objData) => {
+       //console.log(objData.name, objData.type, objData.x, objData.y);
+       const { x = 0, y = 0, name } = objData;
+       switch (name) {
+         case "obstaculo": {
+           // add star to scene
+           // console.log("estrella agregada: ", x, y);
+           const obstaculo = this.obstaculo.create(x, y, "obstaculo");
+           break;
+         }
+       }
+     });
 
+   
     this.cursors = this.input.keyboard.createCursorKeys();
 
     //agregado de fisicas      
@@ -69,11 +87,7 @@ export default class Game extends Phaser.Scene {
     this.physics.add.overlap(
       this.jugador,
       plataformaLayer,
-      (jugador, plataforma) => {
-        if (jugador.body.velocity.y > 0) {
-          this.eliminarPlataforma(jugador, plataforma);
-        }
-      },
+      this.eliminarPlataforma,
       null,
       this
     );
@@ -95,6 +109,8 @@ export default class Game extends Phaser.Scene {
       null,
       this
     );
+
+    
 
     this.physics.add.collider(this.salida, plataformaLayer);
     this.physics.add.overlap(
@@ -120,36 +136,12 @@ export default class Game extends Phaser.Scene {
     //fijar texto
     this.scoreText.setScrollFactor(0);
 
-    // Crea el botón de pausa
-   /* this.pauseButton = this.add.text(300, 15, "Pausa", { fontSize: "20px", fill: "#FFFFFF" })
-      .setInteractive()
-      .on("pointerdown", this.pausarJuego, this);
-
-    // Fija el botón de pausa en la cámara
-    this.pauseButton.setScrollFactor(0);*/
-
-    // Crea la imagen de pausa con el botón de reanudar
-    this.pausa = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, "public/images/pausa.png").setInteractive();
-    this.resumeButton = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY, "REANUDAR", {
-      fontSize: "40px",
-      fill: "#E0CDF8",
-    }).setOrigin(0.5).setInteractive();
-
-    // Oculta la imagen de pausa y el botón de reanudar inicialmente
-    this.pausa.setVisible(false);
-    this.resumeButton.setVisible(false);
-
-    // Configura el evento de clic para el botón de reanudar
-    this.resumeButton.on("pointerdown", this.reanudarJuego, this);
-
+  
 
   }
 
   update() {
-   /* if (this.jugador.y > 10000 ) {
-      this.scene.start("gameOver");
-    }*/
-
+  
     if (this.cursors.left.isDown) {
       this.jugador.anims.play("jump_left", true);
       this.jugador.setVelocityX(-200);
@@ -179,43 +171,7 @@ export default class Game extends Phaser.Scene {
   }
 
   
-  pausarJuego() {
-    if (this.isPaused) return;
-
-    // Pausa la escena actual
-    this.scene.pause();
-
-    // Muestra la imagen de pausa y el botón de reanudar
-    this.pausa.setVisible(true);
-    this.resumeButton.setVisible(true);
-
-    // Desactiva el botón de pausa para evitar que se haga clic mientras el juego está pausado
-    this.pauseButton.disableInteractive();
-
-    // Actualiza el estado de pausa
-    this.isPaused = true;
-
-    console.log("Juego pausado");
-  }
-
-  reanudarJuego() {
-    if (!this.isPaused) return;
-
-    // Reanuda la escena pausada
-    this.scene.resume();
-
-    // Oculta la imagen de pausa y el botón de reanudar
-    this.pausa.setVisible(false);
-    this.resumeButton.setVisible(false);
-
-    // Activa el botón de pausa nuevamente
-    this.pauseButton.setInteractive();
-
-    // Actualiza el estado de pausa
-    this.isPaused = false;
-
-    console.log("Juego reanudado");
-  }
+  
 
   trampolinSalto(jugador, trampolin){
     this.jugador.setVelocityY(-600);

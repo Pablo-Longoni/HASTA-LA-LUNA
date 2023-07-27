@@ -1,14 +1,16 @@
 // URL to explain PHASER scene: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scene/
 
-export default class Game extends Phaser.Scene {
+export default class Game4 extends Phaser.Scene {
   constructor() {
     super("game4");
+    this.resumeButton = null;
+    this.isPaused = false;
   }
 
   init(data) {
     this.isGameOver = false;
-    this.score = data.score; 
-    this.maxScore  = data.maxScore;
+    this.score = 0;
+    this.maxScore = 0;
    
   }
 
@@ -17,6 +19,7 @@ export default class Game extends Phaser.Scene {
   }
 
   create() {
+    
     const map = this.make.tilemap({ key: "mapa6" });
 
     // Parameters are the name you gave the tileset in Tiled and then the key of the tileset image in
@@ -36,7 +39,7 @@ export default class Game extends Phaser.Scene {
     console.log("spawn point player", objectosLayer);
 
     // crear el jugador
-    // Find in the Object Layer, the name "dude" and get position
+    // Find in the Object Layer, the name "jugador" and get position
     let spawnPoint = map.findObject("objetos", (obj) => obj.name === "jugador");
     console.log(spawnPoint);
 
@@ -51,36 +54,45 @@ export default class Game extends Phaser.Scene {
     console.log("spawn point salida ", spawnPoint);
     this.salida = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, "nube").setScale(0.1);
 
-   spawnPoint = map.findObject("objetos", (obj) => obj.name === "trampolin");
+    spawnPoint = map.findObject("objetos", (obj) => obj.name === "trampolin");
     console.log("spawn point trampolin ", spawnPoint);
     this.trampolin = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, "trampolin");
 
     spawnPoint = map.findObject("objetos", (obj) => obj.name === "obstaculo");
     console.log("spawn point obstaculo ", spawnPoint);
-    this.obstaculo = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, "obstaculo");
-
-
-    this.cursors = this.input.keyboard.createCursorKeys();
-
-    //agregado de fisicas
     
 
-  
+     // Create empty group of starts
+     this.obstaculo = this.physics.add.group();
+     // find object layer
+     // if type is "stars", add to stars group
+     objectosLayer.objects.forEach((objData) => {
+       //console.log(objData.name, objData.type, objData.x, objData.y);
+       const { x = 0, y = 0, name } = objData;
+       switch (name) {
+         case "obstaculo": {
+           // add star to scene
+           // console.log("estrella agregada: ", x, y);
+           const obstaculo = this.obstaculo.create(x, y, "obstaculo");
+           break;
+         }
+       }
+     });
+
    
+    this.cursors = this.input.keyboard.createCursorKeys();
+
+    //agregado de fisicas      
     this.physics.add.collider(this.jugador, plataformaLayer);
     this.physics.add.overlap(
       this.jugador,
       plataformaLayer,
-      (jugador, plataforma) => {
-        if (jugador.body.velocity.y > 0) {
-          this.eliminarPlataforma(jugador, plataforma);
-        }
-      },
+      this.eliminarPlataforma,
       null,
       this
     );
 
-   this.physics.add.collider(this.trampolin, plataformaLayer);
+    this.physics.add.collider(this.trampolin, plataformaLayer);
     this.physics.add.overlap(
       this.jugador,
       this.trampolin,
@@ -98,6 +110,8 @@ export default class Game extends Phaser.Scene {
       this
     );
 
+    
+
     this.physics.add.collider(this.salida, plataformaLayer);
     this.physics.add.overlap(
       this.jugador,
@@ -108,7 +122,7 @@ export default class Game extends Phaser.Scene {
     );
 
     //agregar texto
-    this.scoreText = this.add.text(15, 15, "0", { fontSize: "20px", fill: "#000000" });
+    this.scoreText = this.add.text(15, 15, "0", { fontSize: "20px", fill: "#FFFFFF" });
 
     //agregar camara sigue pj
     this.cameras.main.startFollow(this.jugador);
@@ -122,17 +136,12 @@ export default class Game extends Phaser.Scene {
     //fijar texto
     this.scoreText.setScrollFactor(0);
 
-    //boton de pausa 
-
   
 
   }
 
   update() {
-    if (this.jugador.y > 10000 ) {
-      this.scene.start("gameOver");
-    }
-
+  
     if (this.cursors.left.isDown) {
       this.jugador.anims.play("jump_left", true);
       this.jugador.setVelocityX(-200);
@@ -144,7 +153,7 @@ export default class Game extends Phaser.Scene {
     }
 
     if (this.jugador.body.blocked.down) {
-      this.jugador.setVelocityY(-300);
+      this.jugador.setVelocityY(-250);
     }
 
     //Puntuación 
@@ -159,11 +168,13 @@ export default class Game extends Phaser.Scene {
       this.maxScore = this.score;
     }
 
-
   }
 
+  
+  
+
   trampolinSalto(jugador, trampolin){
-    this.jugador.setVelocityY(-600);
+    this.jugador.setVelocityY(-400);
   }
 
   muerte(jugador, obstaculo){
@@ -182,8 +193,8 @@ export default class Game extends Phaser.Scene {
   esVencedor(jugador, salida) {
     console.log("", this.score);
 
-    const escenasDisponibles = ["game2", "game3", "game4"];
-    const indiceAleatorio = Phaser.Math.Between(0, 2);
+    const escenasDisponibles = [ "game2", "game3"];
+    const indiceAleatorio = Phaser.Math.Between(0, 1);
     const escenaAleatoria = escenasDisponibles[indiceAleatorio];
   
     this.scene.start(escenaAleatoria, {

@@ -1,6 +1,6 @@
 // URL to explain PHASER scene: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scene/
 
-export default class Game extends Phaser.Scene {
+export default class Story extends Phaser.Scene {
   constructor() {
     super("story");
     
@@ -56,9 +56,26 @@ export default class Game extends Phaser.Scene {
 
     spawnPoint = map.findObject("objetos", (obj) => obj.name === "obstaculo");
     console.log("spawn point obstaculo ", spawnPoint);
-    this.obstaculo = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, "obstaculo");
+    
 
+     // Create empty group of starts
+     this.obstaculo = this.physics.add.group();
+     // find object layer
+     // if type is "stars", add to stars group
+     objectosLayer.objects.forEach((objData) => {
+       //console.log(objData.name, objData.type, objData.x, objData.y);
+       const { x = 0, y = 0, name } = objData;
+       switch (name) {
+         case "obstaculo": {
+           // add star to scene
+           // console.log("estrella agregada: ", x, y);
+           const obstaculo = this.obstaculo.create(x, y, "obstaculo");
+           break;
+         }
+       }
+     });
 
+   
     this.cursors = this.input.keyboard.createCursorKeys();
 
     //agregado de fisicas      
@@ -89,6 +106,8 @@ export default class Game extends Phaser.Scene {
       this
     );
 
+    
+
     this.physics.add.collider(this.salida, plataformaLayer);
     this.physics.add.overlap(
       this.jugador,
@@ -114,9 +133,7 @@ export default class Game extends Phaser.Scene {
   }
 
   update() {
-   /* if (this.jugador.y > 10000 ) {
-      this.scene.start("gameOver");
-    }*/
+   
 
     if (this.cursors.left.isDown) {
       this.jugador.anims.play("jump_left", true);
@@ -129,7 +146,7 @@ export default class Game extends Phaser.Scene {
     }
 
     if (this.jugador.body.blocked.down) {
-      this.jugador.setVelocityY(-350);
+      this.jugador.setVelocityY(-300);
     }
 
   }
