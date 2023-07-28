@@ -33,10 +33,12 @@ export default class Menu extends Phaser.Scene {
 
     button.on("pointerover", () => {
       this.game.canvas.style.cursor = "pointer";
+      button.setScale(1.2);
     });
 
     button.on("pointerout", () => {
       this.game.canvas.style.cursor = "default";
+      button.setScale(1);
     });
 
     button.on("pointerdown", () => {
@@ -50,10 +52,12 @@ export default class Menu extends Phaser.Scene {
 
     button2.on("pointerover", () => {
       this.game.canvas.style.cursor = "pointer";
+      button2.setScale(1.2);
     });
 
     button2.on("pointerout", () => {
       this.game.canvas.style.cursor = "default";
+      button2.setScale(1);
     });
 
     button2.on("pointerdown", () => {

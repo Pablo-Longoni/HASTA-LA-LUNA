@@ -3,14 +3,12 @@
 export default class Game4 extends Phaser.Scene {
   constructor() {
     super("game4");
-    this.resumeButton = null;
-    this.isPaused = false;
+    
   }
 
   init(data) {
     this.isGameOver = false;
-    this.score = 0;
-    this.maxScore = 0;
+    this.score = this.score;
    
   }
 

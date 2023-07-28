@@ -26,15 +26,17 @@ export default class GameOverStory extends Phaser.Scene {
     
 
      //boton de volver a jugar
-     const button = this.add.image(250, 550, "reiniciar").setScale(0.8)
+     const button = this.add.image(250, 545, "reiniciar").setScale(0.5)
      .setInteractive();
  
      button.on("pointerover", () => {
        this.game.canvas.style.cursor = "pointer";
+       button.setScale(0.6);
      });
  
      button.on("pointerout", () => {
        this.game.canvas.style.cursor = "default";
+       button.setScale(0.5);
      });
  
      button.on("pointerdown", () => {
@@ -43,15 +45,17 @@ export default class GameOverStory extends Phaser.Scene {
      });
  
      //boton de volver menu
-     const button2 = this.add.image(150, 540, "menu-boton").setScale(0.8)
+     const button2 = this.add.image(150, 540, "menu-boton").setScale(0.5)
      .setInteractive();
  
    button2.on("pointerover", () => {
      this.game.canvas.style.cursor = "pointer";
+     button2.setScale(0.6);
    });
  
    button2.on("pointerout", () => {
      this.game.canvas.style.cursor = "default";
+     button2.setScale(0.5);
    });
  
    button2.on("pointerdown", () => {

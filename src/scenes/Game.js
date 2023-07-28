@@ -3,8 +3,7 @@
 export default class Game extends Phaser.Scene {
   constructor() {
     super("game");
-    this.resumeButton = null;
-    this.isPaused = false;
+    
   }
 
   init() {
@@ -83,7 +82,10 @@ export default class Game extends Phaser.Scene {
     this.cursors = this.input.keyboard.createCursorKeys();
 
     //agregado de fisicas      
-    this.physics.add.collider(this.jugador, plataformaLayer);
+    this.physics.add.collider(this.jugador, plataformaLayer/*, () => {
+      const plataformaSound = this.sound.add("plataformaSound");
+      plataformaSound.play();
+    }*/);
     this.physics.add.overlap(
       this.jugador,
       plataformaLayer,
