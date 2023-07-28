@@ -13,7 +13,6 @@ export default class Precarga extends Phaser.Scene {
     
     this.load.tilemapTiledJSON("mapa2","./public/tilemap/mapa2.json");
     this.load.tilemapTiledJSON("mapa3","./public/tilemap/mapa3.json");
-    this.load.tilemapTiledJSON("mapa4","./public/tilemap/mapa4.json");
     this.load.tilemapTiledJSON("mapa5","./public/tilemap/mapa5.json");
     this.load.tilemapTiledJSON("mapa6","./public/tilemap/mapa6.json");
     this.load.tilemapTiledJSON("mapa2.1","./public/tilemap/mapa2.1.json");
@@ -27,16 +26,23 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("menu", "./public/images/menu.png");
     this.load.image("obstaculo","./public/images/obstaculo.png");
     this.load.image("trampolin","./public/images/trampolin.png");
-    this.load.image("pausa","./public/images/pausa.png");
+    
     this.load.image("jugar","./public/images/jugar.png");
     this.load.image("menu-boton","./public/images/boton-menu.png");
     this.load.image("reiniciar","./public/images/boton-reiniciar.png");
     this.load.image("saltar","./public/images/flecha.png");
     this.load.image("reiniciar","./public/images/boton-reiniciar.png");
     this.load.image("gameOver","./public/images/gameOver.png");
-    this.load.video("story1", "./public/images/story1.gif"); 
+    this.load.image("gameOver2", "./public/images/gameOver2.png");
+    
+    
+    
+    this.load.image("story1", "./public/images/story1.png"); 
+    this.load.image("story2", "./public/images/story2.png"); 
+    this.load.image("story3", "./public/images/story3.png");  
 
-   // this.load.audio("music", "./public/music/music.wav");
+    //this.load.audio("music", "./public/music/music.wav");
+
 
   }
 

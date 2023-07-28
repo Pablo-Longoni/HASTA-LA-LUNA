@@ -16,23 +16,17 @@ export default class GameOverStory extends Phaser.Scene {
     this.maxScore  = data.maxScore;
   }
 
+  preload(){
+    
+  }
+
   create() {
     // create game objects
     this.add.image(200, 310, "gameOver");
     
 
-    this.add.scoreText = this.add.text(85, 215, "Puntuación:"+this.score,{
-      fontSize: "30px",
-      fill:"#000",
-    });
-
-    this.add.maxScoreText = this.add.text(15, 315, "Máxima puntuación:"+this.maxScore,{
-      fontSize: "30px",
-      fill:"#000",
-    });
-
      //boton de volver a jugar
-     const button = this.add.image(250, 400, "reiniciar").setScale(0.8)
+     const button = this.add.image(250, 550, "reiniciar").setScale(0.8)
      .setInteractive();
  
      button.on("pointerover", () => {
@@ -49,7 +43,7 @@ export default class GameOverStory extends Phaser.Scene {
      });
  
      //boton de volver menu
-     const button2 = this.add.image(150, 390, "menu-boton").setScale(0.8)
+     const button2 = this.add.image(150, 540, "menu-boton").setScale(0.8)
      .setInteractive();
  
    button2.on("pointerover", () => {

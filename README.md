@@ -1,3 +1,7 @@
-# Hasta La Luna
+# HASTA LA LUNA
 
-Trabajo Final de programacion - Juego "Hasta la luna" 
+Hasta La Luna:  
+
+GDD:
+
+TDD: 

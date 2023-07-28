@@ -7,7 +7,7 @@ export default class Game3 extends Phaser.Scene {
     this.isPaused = false;
   }
 
-  init() {
+  init(data) {
     this.isGameOver = false;
     this.score = 0;
     this.maxScore = 0;
