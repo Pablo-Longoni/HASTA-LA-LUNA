@@ -17,7 +17,7 @@ export default class Game extends Phaser.Scene {
   preload() {
     // cargar los recursos
     this.load.spritesheet("pj", "./public/images/PJ.png", { frameWidth: 64, frameHeight: 64});
-    this.load.spritesheet("pj-a", "./public/images/PJ-A.png", { frameWidth: 64, frameHeight: 64});
+    this.load.spritesheet("pj-c", "./public/images/pj-casco.png", { frameWidth: 64, frameHeight: 64});
     this.load.spritesheet("muerte", "./public/images/muerte.png", { frameWidth: 55, frameHeight: 64});
   }
 

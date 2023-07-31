@@ -4,7 +4,7 @@ export default class Animation extends Phaser.Scene {
   constructor() {
     // key of the scene
     // the key will be used to start the scene by other scenes
-    super("animation");
+    super("animation2");
   }
 
   init() {
@@ -16,9 +16,9 @@ export default class Animation extends Phaser.Scene {
   }
   preload() { 
     
-    this.load.image("story1", "./public/images/story-1.png"); 
-    this.load.image("story2", "./public/images/story-2.png"); 
-    this.load.image("story3", "./public/images/story-3.png"); 
+    this.load.image("story4", "./public/images/story-4.png"); 
+    this.load.image("story5", "./public/images/story-5.png"); 
+   
   }
 
   create() {
@@ -42,40 +42,26 @@ export default class Animation extends Phaser.Scene {
     });*/
 
   
-     this.story1 = this.add.image(200, 310, "story3");
+     this.story5 = this.add.image(200, 310, "story5");
     
      // Desvanecer story1 y mostrar story2 después de segundos
      this.tweens.add({
-       targets: this.story1,
+       targets: this.story5,
        alpha: 0,
        duration: 500,
        ease: "Power0",
        delay: 1500,
        onComplete: () => {
          //  mostrar la imagen story2
-         this.story1.setVisible(false);
-         this.story2 = this.add.image(200, 310, "story2");
-         
-         // Desvanecer story2 y mostrar story3 después de  segundos
-         this.tweens.add({
-           targets: this.story2,
-           alpha: 0,
-           duration: 500,
-           ease: "Power0",
-           delay: 1500,
-           onComplete: () => {
-             //  mostrar la imagen story3
-             this.story2.setVisible(false);
-             this.story3 = this.add.image(200, 310, "story1");
- 
-             // Iniciar la escena story después de segundos
-             setTimeout(() => {
-               this.scene.start("story");
-             }, 1500);
+         this.story5.setVisible(false);
+         this.story4 = this.add.image(200, 310, "story4");
+
+         // Iniciar la escena story después de segundos
+         setTimeout(() => {
+          this.scene.start("winner");
+        }, 1500); 
            },
          });
-       },
-     });
     
   }
 

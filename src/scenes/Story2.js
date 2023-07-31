@@ -14,8 +14,7 @@ export default class Story2 extends Phaser.Scene {
 
   preload() {
     // cargar los recursos
-    this.load.spritesheet("pj", "./public/images/PJ.png", { frameWidth: 64, frameHeight: 64});
-    this.load.spritesheet("muerte", "./public/images/muerte.png", { frameWidth: 55, frameHeight: 64});
+    this.load.spritesheet("pj-c", "./public/images/pj-ca.png", { frameWidth: 55, frameHeight: 64});
   }
 
   create() {
@@ -133,65 +132,57 @@ export default class Story2 extends Phaser.Scene {
 
     //animaciónes del pj 
     this.anims.create({
-      key: "left",
-      frames: this.anims.generateFrameNumbers("pj", { start:4, end: 4}),
+      key: "izquierda",
+      frames: this.anims.generateFrameNumbers("pj-c", { start:2, end: 2}),
       frameRate: 10, 
       repeat: 1,
     });
   
     this.anims.create({
-      key: "right",
-      frames: this.anims.generateFrameNumbers("pj", { start: 5, end: 5 }),
+      key: "derecha",
+      frames: this.anims.generateFrameNumbers("pj-c", { start: 3, end: 3 }),
       frameRate: 10,
       repeat: 1,
     });
 
     this.anims.create({
-      key: "jump1",
-      frames: this.anims.generateFrameNumbers("pj", { start: 2, end: 2 }),
+      key: "salto1",
+      frames: this.anims.generateFrameNumbers("pj-c", { start: 1, end: 1 }),
       frameRate: 10,
       repeat: 1,
     });
 
     this.anims.create({
-      key: "jump2",
-      frames: this.anims.generateFrameNumbers("pj", { start: 7, end: 7 }),
+      key: "salto2",
+      frames: this.anims.generateFrameNumbers("pj-c", { start: 4, end: 4 }),
       frameRate: 10,
       repeat: 1,
     });
 
     this.anims.create({
-      key: "fall1",
-      frames: this.anims.generateFrameNumbers("pj", { start: 1, end: 1 }),
+      key: "caida1",
+      frames: this.anims.generateFrameNumbers("pj-c", { start: 0, end: 0 }),
       frameRate: 10,
       repeat: 1,
     });
 
     this.anims.create({
-      key: "fall2",
-      frames: this.anims.generateFrameNumbers("pj", { start: 8, end: 8 }),
+      key: "caida2",
+      frames: this.anims.generateFrameNumbers("pj-c", { start: 5, end: 5 }),
       frameRate: 10,
       repeat: 1,
     });
-
-    this.anims.create({
-      key: "muerte",
-      frames: this.anims.generateFrameNumbers("muerte", { start: 0, end: 2 }),
-      frameRate: 10,
-      repeat: 0,
-    });
-
   }
 
   update() {
    
     if (this.cursors.left.isDown) {
       this.direction = "left"; // Actualizar la dirección del personaje
-      this.jugador.anims.play("left", true);
+      this.jugador.anims.play("izquierda", true);
       this.jugador.setVelocityX(-200);
     } else if (this.cursors.right.isDown) {
       this.direction = "right"; // Actualizar la dirección del personaje
-      this.jugador.anims.play("right", true);
+      this.jugador.anims.play("derecha", true);
       this.jugador.setVelocityX(200);
     } else {
       this.jugador.setVelocityX(0);
@@ -209,17 +200,17 @@ export default class Story2 extends Phaser.Scene {
   //comprobar si el jugador está cayendo
   if (this.jugador.y > this.prevY) {
     if (this.direction === "left") {
-      this.jugador.anims.play("fall1", true); 
+      this.jugador.anims.play("caida1", true); 
     } else {
-      this.jugador.anims.play("fall2", true); 
+      this.jugador.anims.play("caida2", true); 
     }
   }
   //comprobar si el jugador está subiendo
   if (this.jugador.y < this.prevY) {
     if (this.direction === "left") {
-      this.jugador.anims.play("jump1", true); 
+      this.jugador.anims.play("salto1", true); 
     } else {
-      this.jugador.anims.play("jump2", true); 
+      this.jugador.anims.play("salto2", true); 
     }
   }
 
@@ -238,7 +229,7 @@ export default class Story2 extends Phaser.Scene {
     }
   
     esVencedor(jugador, salida) {
-      this.scene.start("winner");
+      this.scene.start("animation2");
     }
 
   }

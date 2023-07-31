@@ -13,47 +13,47 @@ export default class Winner extends Phaser.Scene {
 
   create() {
     // create game objects
-    this.add.image(200, 310, "fondo");
-    this.gameOverText = this.add.text(60, 85, "Ganaste", {
-      fontSize: "60px",
-      fill: "#000",
-    });
-
+    this.add.image(200, 310, "winner");
+  
 
     //boton de volver a jugar
-    const button = this.add.image(250, 400, "reiniciar").setScale(0.8)
-    .setInteractive();
 
-    button.on("pointerover", () => {
-      this.game.canvas.style.cursor = "pointer";
-    });
-
-    button.on("pointerout", () => {
-      this.game.canvas.style.cursor = "default";
-    });
-
-    button.on("pointerdown", () => {
-      this.game.canvas.style.cursor = "default";
-      this.scene.start("story");
-    });
-
-    //boton de volver menu
-    const button2 = this.add.image(150, 390, "menu-boton").setScale(0.8)
-    .setInteractive();
-
-  button2.on("pointerover", () => {
-    this.game.canvas.style.cursor = "pointer";
-  });
-
-  button2.on("pointerout", () => {
-    this.game.canvas.style.cursor = "default";
-  });
-
-  button2.on("pointerdown", () => {
-    this.game.canvas.style.cursor = "default";
-    this.scene.start("menu");
-  });
-
+    const button = this.add.image(270, 545, "reiniciar").setScale(0.5)
+     .setInteractive();
+ 
+     button.on("pointerover", () => {
+       this.game.canvas.style.cursor = "pointer";
+       button.setScale(0.6);
+     });
+ 
+     button.on("pointerout", () => {
+       this.game.canvas.style.cursor = "default";
+       button.setScale(0.5);
+     });
+ 
+     button.on("pointerdown", () => {
+       this.game.canvas.style.cursor = "default";
+       this.scene.start("story");
+     });
+ 
+     //boton de volver menu
+     const button2 = this.add.image(150, 540, "menu-boton").setScale(0.5)
+     .setInteractive();
+ 
+   button2.on("pointerover", () => {
+     this.game.canvas.style.cursor = "pointer";
+     button2.setScale(0.6);
+   });
+ 
+   button2.on("pointerout", () => {
+     this.game.canvas.style.cursor = "default";
+     button2.setScale(0.5);
+   });
+ 
+   button2.on("pointerdown", () => {
+     this.game.canvas.style.cursor = "default";
+     this.scene.start("menu");
+   });
   }
 
   update() {

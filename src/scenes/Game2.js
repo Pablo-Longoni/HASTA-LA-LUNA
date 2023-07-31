@@ -15,8 +15,7 @@ export default class Game2 extends Phaser.Scene {
 
   preload() {
     // cargar los recursos
-    this.load.spritesheet("pj-a", "./public/images/PJ-A.png", { frameWidth: 64, frameHeight: 64});
-    this.load.spritesheet("muerte", "./public/images/muerte.png", { frameWidth: 55, frameHeight: 64});
+    this.load.spritesheet("pj-c", "./public/images/pj-casco.png", { frameWidth: 64, frameHeight: 64});
   }
 
   create() {
@@ -140,52 +139,46 @@ export default class Game2 extends Phaser.Scene {
     //animaciónes del pj 
     this.anims.create({
       key: "left",
-      frames: this.anims.generateFrameNumbers("pj-a", { start:4, end: 4}),
+      frames: this.anims.generateFrameNumbers("pj-c", { start:2, end: 2}),
       frameRate: 10, 
       repeat: 1,
     });
   
     this.anims.create({
       key: "right",
-      frames: this.anims.generateFrameNumbers("pj-a", { start: 5, end: 5 }),
+      frames: this.anims.generateFrameNumbers("pj-c", { start: 3, end: 3 }),
       frameRate: 10,
       repeat: 1,
     });
 
     this.anims.create({
       key: "jump1",
-      frames: this.anims.generateFrameNumbers("pj-a", { start: 2, end: 2 }),
+      frames: this.anims.generateFrameNumbers("pj-c", { start: 1, end: 1 }),
       frameRate: 10,
       repeat: 1,
     });
 
     this.anims.create({
       key: "jump2",
-      frames: this.anims.generateFrameNumbers("pj-a", { start: 7, end: 7 }),
+      frames: this.anims.generateFrameNumbers("pj-c", { start: 4, end: 4 }),
       frameRate: 10,
       repeat: 1,
     });
 
     this.anims.create({
       key: "fall1",
-      frames: this.anims.generateFrameNumbers("pj-a", { start: 1, end: 1 }),
+      frames: this.anims.generateFrameNumbers("pj-c", { start: 0, end: 0 }),
       frameRate: 10,
       repeat: 1,
     });
 
     this.anims.create({
       key: "fall2",
-      frames: this.anims.generateFrameNumbers("pj-a", { start: 8, end: 8 }),
+      frames: this.anims.generateFrameNumbers("pj-c", { start: 5, end: 5 }),
       frameRate: 10,
       repeat: 1,
     });
 
-    this.anims.create({
-      key: "muerte",
-      frames: this.anims.generateFrameNumbers("muerte", { start: 0, end: 2 }),
-      frameRate: 10,
-      repeat: 0,
-    });
 
   
 

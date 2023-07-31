@@ -21,8 +21,7 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("fondo", "./public/images/fondo.png");
     this.load.image("nube", "./public/images/nube.png");
 
-    this.load.spritesheet("pj", "./public/images/pj.png", { frameWidth: 64, frameHeight: 64});
-    this.load.spritesheet("pj-a", "./public/images/PJ-A.png", { frameWidth: 64, frameHeight: 64});
+    
 
     this.load.image("menu", "./public/images/menu.png");
     this.load.image("obstaculo","./public/images/obstaculo.png");
@@ -36,11 +35,12 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("gameOver","./public/images/gameOver.png");
     this.load.image("gameOver2", "./public/images/gameOver2.png");
     this.load.image("historia", "./public/images/historia.png");  
+    this.load.image("winner", "./public/images/winner.png");
     
     
-    this.load.image("story1", "./public/images/story1.png"); 
-    this.load.image("story2", "./public/images/story2.png"); 
-    this.load.image("story3", "./public/images/story3.png");  
+    this.load.image("story1", "./public/images/story-1.png"); 
+    this.load.image("story2", "./public/images/story-2.png"); 
+    this.load.image("story3", "./public/images/story-3.png");  
 
     //this.load.audio("music", "./public/music/music.wav");
     this.load.audio("trampolin", ".public/music/trampolin.mp3");
