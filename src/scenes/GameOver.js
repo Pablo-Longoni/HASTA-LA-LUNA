@@ -13,7 +13,6 @@ export default class GameOver extends Phaser.Scene {
     // take data passed from other scenes
     // data object param {}
     this.score = data.score; 
-    this.maxScore  = data.maxScore;
   }
 
   preload(){
@@ -23,7 +22,7 @@ export default class GameOver extends Phaser.Scene {
     // create game objects
     this.add.image(200, 310, "gameOver2");
       
-    this.add.scoreText = this.add.text(190, 415, ""+this.score, { fontSize: "30px", fill: "#ffffff" });
+    this.add.scoreText = this.add.text(175, 415, ""+this.score, { fontSize: "30px", fill: "#ffffff" });
   
 
 

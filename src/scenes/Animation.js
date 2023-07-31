@@ -22,7 +22,26 @@ export default class Animation extends Phaser.Scene {
   }
 
   create() {
+
     // create game objects
+
+    //boton de volver a saltar
+   /* const button = this.add.image(350, 600, "saltar").setInteractive();
+
+    button.on("pointerover", () => {
+      this.game.canvas.style.cursor = "pointer";
+    });
+
+    button.on("pointerout", () => {
+      this.game.canvas.style.cursor = "default";
+    });
+
+    button.on("pointerdown", () => {
+      this.game.canvas.style.cursor = "default";
+      this.scene.start("story");
+    });*/
+
+  
      this.story1 = this.add.image(200, 310, "story1");
     
      // Desvanecer story1 y mostrar story2 después de segundos
@@ -30,7 +49,7 @@ export default class Animation extends Phaser.Scene {
        targets: this.story1,
        alpha: 0,
        duration: 500,
-       ease: "Linear",
+       ease: "Power0",
        delay: 1500,
        onComplete: () => {
          //  mostrar la imagen story2
@@ -42,7 +61,7 @@ export default class Animation extends Phaser.Scene {
            targets: this.story2,
            alpha: 0,
            duration: 500,
-           ease: "Linear",
+           ease: "Power0",
            delay: 1500,
            onComplete: () => {
              //  mostrar la imagen story3
@@ -57,22 +76,7 @@ export default class Animation extends Phaser.Scene {
          });
        },
      });
-    //boton de volver a saltar
-    const button = this.add.image(350, 600, "saltar").setInteractive();
-
-    button.on("pointerover", () => {
-      this.game.canvas.style.cursor = "pointer";
-    });
-
-    button.on("pointerout", () => {
-      this.game.canvas.style.cursor = "default";
-    });
-
-    button.on("pointerdown", () => {
-      this.game.canvas.style.cursor = "default";
-      this.scene.start("story");
-    });
-
+    
   }
 
   update() {

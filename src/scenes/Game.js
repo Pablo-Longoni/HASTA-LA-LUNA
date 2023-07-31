@@ -3,18 +3,22 @@
 export default class Game extends Phaser.Scene {
   constructor() {
     super("game");
-    
+    this.direction = "right";
+    let prevY; 
+    let prevX;
   }
 
   init() {
     this.isGameOver = false;
     this.score = 0;
-    this.maxScore = 0;
-   
+
   }
 
   preload() {
     // cargar los recursos
+    this.load.spritesheet("pj", "./public/images/PJ.png", { frameWidth: 64, frameHeight: 64});
+    this.load.spritesheet("pj-a", "./public/images/PJ-A.png", { frameWidth: 64, frameHeight: 64});
+    this.load.spritesheet("muerte", "./public/images/muerte.png", { frameWidth: 55, frameHeight: 64});
   }
 
   create() {
@@ -138,17 +142,70 @@ export default class Game extends Phaser.Scene {
     //fijar texto
     this.scoreText.setScrollFactor(0);
 
+    //animaciónes del pj 
+    this.anims.create({
+      key: "left",
+      frames: this.anims.generateFrameNumbers("pj", { start:4, end: 4}),
+      frameRate: 10, 
+      repeat: 1,
+    });
   
+    this.anims.create({
+      key: "right",
+      frames: this.anims.generateFrameNumbers("pj", { start: 5, end: 5 }),
+      frameRate: 10,
+      repeat: 1,
+    });
+
+    this.anims.create({
+      key: "jump1",
+      frames: this.anims.generateFrameNumbers("pj", { start: 2, end: 2 }),
+      frameRate: 10,
+      repeat: 1,
+    });
+
+    this.anims.create({
+      key: "jump2",
+      frames: this.anims.generateFrameNumbers("pj", { start: 7, end: 7 }),
+      frameRate: 10,
+      repeat: 1,
+    });
+
+    this.anims.create({
+      key: "fall1",
+      frames: this.anims.generateFrameNumbers("pj", { start: 1, end: 1 }),
+      frameRate: 10,
+      repeat: 1,
+    });
+
+    this.anims.create({
+      key: "fall2",
+      frames: this.anims.generateFrameNumbers("pj", { start: 8, end: 8 }),
+      frameRate: 10,
+      repeat: 1,
+    });
+
+    this.anims.create({
+      key: "muerte",
+      frames: this.anims.generateFrameNumbers("muerte", { start: 0, end: 2 }),
+      frameRate: 10,
+      repeat: 0,
+    });
+
+    //altura del mundo
+    this.worldHeight = this.physics.world.bounds.height;
 
   }
 
   update() {
   
     if (this.cursors.left.isDown) {
-      this.jugador.anims.play("jump_left", true);
+      this.direction = "left"; // Actualizar la dirección del personaje
+      this.jugador.anims.play("left", true);
       this.jugador.setVelocityX(-200);
     } else if (this.cursors.right.isDown) {
-      this.jugador.anims.play("jump_right", true);
+      this.direction = "right"; // Actualizar la dirección del personaje
+      this.jugador.anims.play("right", true);
       this.jugador.setVelocityX(200);
     } else {
       this.jugador.setVelocityX(0);
@@ -158,23 +215,56 @@ export default class Game extends Phaser.Scene {
       this.jugador.setVelocityY(-300);
     }
 
+    // Rastrear la posición anterior del jugador en cada actualización del juego
+  if (this.prevY === undefined) {
+    this.prevY = this.jugador.y;
+  }
+
+  //comprobar si el jugador está cayendo
+  if (this.jugador.y > this.prevY) {
+    if (this.direction === "left") {
+      this.jugador.anims.play("fall1", true); 
+    } else {
+      this.jugador.anims.play("fall2", true); 
+    }
+  }
+  //comprobar si el jugador está subiendo
+  if (this.jugador.y < this.prevY) {
+    if (this.direction === "left") {
+      this.jugador.anims.play("jump1", true); 
+    } else {
+      this.jugador.anims.play("jump2", true); 
+    }
+  }
+
+  // Actualizar la posición anterior con la posición actual 
+  this.prevY = this.jugador.y;
+
+
     //Puntuación 
 
-    if (this.jugador.body.velocity.y > 0) {
-      this.score++;
-      this.scoreText.setText(this.score.toString());
-    }
+    // Rastrear la posición anterior del jugador en cada actualización del juego
+  if (this.prevX === undefined) {
+    this.prevX = this.jugador.x;
+  }
 
-    // Actualizar la puntuación máxima si se supera
-    if (this.score > this.maxScore) {
-      this.maxScore = this.score;
-    }
+  if (this.jugador.x != this.prevX){
+      // Incrementar el puntaje basado en la posición vertical del jugador
+      const verticalIncrement = Math.floor((this.jugador.y + this.prevY) / 3500); 
+      this.score += verticalIncrement;
+  
+      // Actualizar el texto del puntaje en la pantalla
+      this.scoreText.setText(this.score.toString());
+
+      }
+
+    // Actualizar la posición anterior con la posición actual 
+  this.prevX = this.jugador.x;
+
 
   }
 
   
-  
-
   trampolinSalto(jugador, trampolin){
     this.jugador.setVelocityY(-600);
   }
@@ -182,7 +272,6 @@ export default class Game extends Phaser.Scene {
   muerte(jugador, obstaculo){
     this.scene.start("gameOver", {
       score: this.score,
-      maxScore: this.maxScore,
     });
   }
 
@@ -201,7 +290,6 @@ export default class Game extends Phaser.Scene {
   
     this.scene.start(escenaAleatoria, {
       score: this.score,
-      maxScore: this.maxScore,
     });
   }
 }

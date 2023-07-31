@@ -7,13 +7,8 @@ export default class Winner extends Phaser.Scene {
     super("winner");
   }
 
-  init(data) {
-    // this is called before the scene is created
-    // init variables
-    // take data passed from other scenes
-    // data object param {}
-    this.score = data.score; 
-    this.maxScore  = data.maxScore;
+  init() {
+    
   }
 
   create() {

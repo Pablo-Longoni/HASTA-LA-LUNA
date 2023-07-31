@@ -22,6 +22,7 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("nube", "./public/images/nube.png");
 
     this.load.spritesheet("pj", "./public/images/pj.png", { frameWidth: 64, frameHeight: 64});
+    this.load.spritesheet("pj-a", "./public/images/PJ-A.png", { frameWidth: 64, frameHeight: 64});
 
     this.load.image("menu", "./public/images/menu.png");
     this.load.image("obstaculo","./public/images/obstaculo.png");
@@ -34,7 +35,7 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("reiniciar","./public/images/boton-reiniciar.png");
     this.load.image("gameOver","./public/images/gameOver.png");
     this.load.image("gameOver2", "./public/images/gameOver2.png");
-    
+    this.load.image("historia", "./public/images/historia.png");  
     
     
     this.load.image("story1", "./public/images/story1.png"); 
@@ -42,27 +43,11 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("story3", "./public/images/story3.png");  
 
     //this.load.audio("music", "./public/music/music.wav");
-
-
+    this.load.audio("trampolin", ".public/music/trampolin.mp3");
   }
 
   create() {
     // create game objects
-     //  Our player animations, turning, walking left and walking right.
-    // se crea una sola vez, para que no de error en el restart de la escena
-   /* this.anims.create({
-      key: "jump_left",
-      frames: this.anims.generateFrameNumbers("pj", { start:4, end: 0}),
-      frameRate: 10, 
-      repeat: 1,
-    });*/
-  
-    /*this.anims.create({
-      key: "jump_right",
-      frames: this.anims.generateFrameNumbers("pj", { start: 5, end: 9 }),
-      frameRate: 10,
-      repeat: 1,
-    });*/
 
     this.music = this.sound.add("music", { loop: true});
     this.music.play();
