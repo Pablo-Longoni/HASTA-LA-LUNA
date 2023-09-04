@@ -13,8 +13,7 @@ export default class Story2 extends Phaser.Scene {
   }
 
   preload() {
-    // cargar los recursos
-    this.load.spritesheet("pj-c", "./public/images/pj-ca.png", { frameWidth: 55, frameHeight: 64});
+    
   }
 
   create() {
@@ -130,48 +129,7 @@ export default class Story2 extends Phaser.Scene {
     //camara no sale del mapa
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-    //animaciónes del pj 
-    this.anims.create({
-      key: "izquierda",
-      frames: this.anims.generateFrameNumbers("pj-c", { start:2, end: 2}),
-      frameRate: 10, 
-      repeat: 1,
-    });
-  
-    this.anims.create({
-      key: "derecha",
-      frames: this.anims.generateFrameNumbers("pj-c", { start: 3, end: 3 }),
-      frameRate: 10,
-      repeat: 1,
-    });
-
-    this.anims.create({
-      key: "salto1",
-      frames: this.anims.generateFrameNumbers("pj-c", { start: 1, end: 1 }),
-      frameRate: 10,
-      repeat: 1,
-    });
-
-    this.anims.create({
-      key: "salto2",
-      frames: this.anims.generateFrameNumbers("pj-c", { start: 4, end: 4 }),
-      frameRate: 10,
-      repeat: 1,
-    });
-
-    this.anims.create({
-      key: "caida1",
-      frames: this.anims.generateFrameNumbers("pj-c", { start: 0, end: 0 }),
-      frameRate: 10,
-      repeat: 1,
-    });
-
-    this.anims.create({
-      key: "caida2",
-      frames: this.anims.generateFrameNumbers("pj-c", { start: 5, end: 5 }),
-      frameRate: 10,
-      repeat: 1,
-    });
+    
   }
 
   update() {

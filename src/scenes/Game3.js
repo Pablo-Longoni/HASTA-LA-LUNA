@@ -16,7 +16,7 @@ export default class Game3 extends Phaser.Scene {
 
   preload() {
     // cargar los recursos
-    this.load.spritesheet("pj-c", "./public/images/pj-casco.png", { frameWidth: 64, frameHeight: 64});
+    
   }
 
   create() {
@@ -137,48 +137,7 @@ export default class Game3 extends Phaser.Scene {
     //fijar texto
     this.scoreText.setScrollFactor(0);
 
-    //animaciónes del pj 
-    this.anims.create({
-      key: "left",
-      frames: this.anims.generateFrameNumbers("pj-c", { start:2, end: 2}),
-      frameRate: 10, 
-      repeat: 1,
-    });
-  
-    this.anims.create({
-      key: "right",
-      frames: this.anims.generateFrameNumbers("pj-c", { start: 3, end: 3 }),
-      frameRate: 10,
-      repeat: 1,
-    });
-
-    this.anims.create({
-      key: "jump1",
-      frames: this.anims.generateFrameNumbers("pj-c", { start: 1, end: 1 }),
-      frameRate: 10,
-      repeat: 1,
-    });
-
-    this.anims.create({
-      key: "jump2",
-      frames: this.anims.generateFrameNumbers("pj-c", { start: 4, end: 4 }),
-      frameRate: 10,
-      repeat: 1,
-    });
-
-    this.anims.create({
-      key: "fall1",
-      frames: this.anims.generateFrameNumbers("pj-c", { start: 0, end: 0 }),
-      frameRate: 10,
-      repeat: 1,
-    });
-
-    this.anims.create({
-      key: "fall2",
-      frames: this.anims.generateFrameNumbers("pj-c", { start: 5, end: 5 }),
-      frameRate: 10,
-      repeat: 1,
-    });
+   
   
 
   }

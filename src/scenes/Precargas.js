@@ -1,13 +1,20 @@
 // URL to explain PHASER scene: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scene/
 
-export default class Precarga extends Phaser.Scene {
+export default class Precargas extends Phaser.Scene {
   constructor() {
     // key of the scene
     // the key will be used to start the scene by other scenes
-    super("precarga");
+    super("precargas");
   }
 
-  preload() {
+  init() {
+    // this is called before the scene is created
+    // init variables
+    // take data passed from other scenes
+    // data object param {}
+    
+  }
+  preload() { 
     // load assets
 
     
@@ -47,9 +54,11 @@ export default class Precarga extends Phaser.Scene {
 
     this.load.audio("music", "./public/music/music.wav");
     this.load.audio("trampolin", ".public/music/trampolin.mp3");
+   
   }
 
   create() {
+
     // create game objects
 
     this.music = this.sound.add("music", { loop: true});
@@ -149,16 +158,14 @@ export default class Precarga extends Phaser.Scene {
       repeat: 1,
     });
 
+    this.scene.start("menu");
+
+    
+
+    
   }
 
   update() {
-    // update game objects
-  }
-  init() {
-    //init scene menu
-    this.scene.start("menu");
+   
   }
 }
-
-
-
