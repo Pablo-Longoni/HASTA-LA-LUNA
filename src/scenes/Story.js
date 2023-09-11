@@ -132,57 +132,6 @@ export default class Story extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
 
-    //animaciones del pj
-
-    this.anims.create({
-      key: "left",
-      frames: this.anims.generateFrameNumbers("pj", { start:4, end: 4}),
-      frameRate: 10, 
-      repeat: 1,
-    });
-  
-    this.anims.create({
-      key: "right",
-      frames: this.anims.generateFrameNumbers("pj", { start: 5, end: 5 }),
-      frameRate: 10,
-      repeat: 1,
-    });
-
-    this.anims.create({
-      key: "jump1",
-      frames: this.anims.generateFrameNumbers("pj", { start: 2, end: 2 }),
-      frameRate: 10,
-      repeat: 1,
-    });
-
-    this.anims.create({
-      key: "jump2",
-      frames: this.anims.generateFrameNumbers("pj", { start: 7, end: 7 }),
-      frameRate: 10,
-      repeat: 1,
-    });
-
-    this.anims.create({
-      key: "fall1",
-      frames: this.anims.generateFrameNumbers("pj", { start: 1, end: 1 }),
-      frameRate: 10,
-      repeat: 1,
-    });
-
-    this.anims.create({
-      key: "fall2",
-      frames: this.anims.generateFrameNumbers("pj", { start: 8, end: 8 }),
-      frameRate: 10,
-      repeat: 1,
-    });
-
-    this.anims.create({
-      key: "muerte",
-      frames: this.anims.generateFrameNumbers("muerte", { start: 0, end: 2 }),
-      frameRate: 10,
-      repeat: 0,
-    });
-
     
     
 
@@ -192,12 +141,12 @@ export default class Story extends Phaser.Scene {
   update() {
    
     if (this.cursors.left.isDown) {
-      this.direction = "left"; // Actualizar la dirección del personaje
-      this.jugador.anims.play("left", true);
+      /*this.direction = "left"; // Actualizar la dirección del personaje
+      this.jugador.anims.play("left", true);*/
       this.jugador.setVelocityX(-200);
     } else if (this.cursors.right.isDown) {
-      this.direction = "right"; // Actualizar la dirección del personaje
-      this.jugador.anims.play("right", true);
+      /*this.direction = "right"; // Actualizar la dirección del personaje
+      this.jugador.anims.play("right", true);*/
       this.jugador.setVelocityX(200);
     } else {
       this.jugador.setVelocityX(0);
@@ -212,7 +161,7 @@ export default class Story extends Phaser.Scene {
     this.prevY = this.jugador.y;
   }
 
-  //comprobar si el jugador está cayendo
+  /*/comprobar si el jugador está cayendo
   if (this.jugador.y > this.prevY) {
     if (this.direction === "left") {
       this.jugador.anims.play("fall1", true); 
@@ -227,7 +176,7 @@ export default class Story extends Phaser.Scene {
     } else {
       this.jugador.anims.play("jump2", true); 
     }
-  }
+  }*/
 
   // Actualizar la posición anterior con la posición actual 
   this.prevY = this.jugador.y;
