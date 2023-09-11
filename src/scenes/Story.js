@@ -14,7 +14,7 @@ export default class Story extends Phaser.Scene {
 
   preload() {
     // cargar los recursos
-    
+    this.load.spritesheet("pj", "./public/images/PJ.png", { frameWidth: 64, frameHeight: 64});
    
   }
 
@@ -143,12 +143,12 @@ export default class Story extends Phaser.Scene {
   update() {
    
     if (this.cursors.left.isDown) {
-      /*this.direction = "left"; // Actualizar la dirección del personaje
-      this.jugador.anims.play("left", true);*/
+      this.direction = "left"; // Actualizar la dirección del personaje
+      this.jugador.anims.play("left", true);
       this.jugador.setVelocityX(-200);
     } else if (this.cursors.right.isDown) {
-      /*this.direction = "right"; // Actualizar la dirección del personaje
-      this.jugador.anims.play("right", true);*/
+      this.direction = "right"; // Actualizar la dirección del personaje
+      this.jugador.anims.play("right", true);
       this.jugador.setVelocityX(200);
     } else {
       this.jugador.setVelocityX(0);
@@ -163,7 +163,7 @@ export default class Story extends Phaser.Scene {
     this.prevY = this.jugador.y;
   }
 
-  /*/comprobar si el jugador está cayendo
+  //comprobar si el jugador está cayendo
   if (this.jugador.y > this.prevY) {
     if (this.direction === "left") {
       this.jugador.anims.play("fall1", true); 
@@ -181,7 +181,7 @@ export default class Story extends Phaser.Scene {
   }
 
   // Actualizar la posición anterior con la posición actual 
-  this.prevY = this.jugador.y;*/
+  this.prevY = this.jugador.y;
 
   }
 

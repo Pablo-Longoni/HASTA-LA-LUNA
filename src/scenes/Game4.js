@@ -235,7 +235,6 @@ export default class Game4 extends Phaser.Scene {
   
     this.scene.start(escenaAleatoria, {
       score: this.score,
-      maxScore: this.maxScore,
     });
   }
 }
