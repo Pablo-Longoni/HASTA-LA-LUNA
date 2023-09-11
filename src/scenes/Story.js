@@ -14,7 +14,7 @@ export default class Story extends Phaser.Scene {
 
   preload() {
     // cargar los recursos
-    this.load.spritesheet("pj", "./public/images/PJ.png", { frameWidth: 64, frameHeight: 64});
+    this.load.image("pj", "./public/images/PJ-1.png")
    
   }
 
