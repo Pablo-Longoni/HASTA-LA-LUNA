@@ -53,7 +53,7 @@ export default class Precargas extends Phaser.Scene {
     this.load.spritesheet("pj-c", "./public/images/pj-casco.png", { frameWidth: 55, frameHeight: 64});
 
     this.load.audio("music", "./public/music/music.wav");
-    this.load.audio("trampolin", ".public/music/trampolin.mp3");
+    
    
   }
 

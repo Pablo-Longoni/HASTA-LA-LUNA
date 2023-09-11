@@ -4,12 +4,12 @@
 llegar a la luna. Para conseguirlo el jugador deberá ir saltando de una plataforma a otra
 esquivando los obstáculos. 
 
-Hasta la luna tiene dos modos de juego. El primer modo de juego contiene unas viñetas de introducción y unas al finalizar el nivel. Mientras que el modo de juego normal, es un nivel con un bucle infinito y un marcador de puntos. 
+Hasta la luna tiene dos modos de juego. El primer modo de juego contiene unas viñetas de introducción y unas al finalizar el nivel. Mientras que el modo de juego normal, es un nivel con un bucle infinito de mapas y un marcador de puntos. 
 
-GDD: https://docs.google.com/document/d/1VEPQU4fQHLQDBkdIggU0fQi4PBR8XywX5vbXaVL_9jY/edit?usp=sharing
+GDD: https://drive.google.com/file/d/1e-pKGC368dMUDnFWcPvwFSLv28pN8-QC/view?usp=sharing
 
-TDD: https://docs.google.com/document/d/1PL0YEI6tvzTizY8fi6SzDtyhaUVOQQ9sfvxsJ-7dC7w/edit?usp=sharing
+TDD: https://drive.google.com/file/d/16Gs-rCPOk0k4euSpLRTbUoiIuMOVT5fi/view?usp=sharing
 
-GitPage: https://pablo-longoni.github.io/HASTA-LA-LUNA-TPFinal/
+GitPage: https://pablo-longoni.github.io/HASTA-LA-LUNA/
 
 Contacto: pablolongoni19@gmail.com

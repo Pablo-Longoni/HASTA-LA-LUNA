@@ -25,23 +25,7 @@ export default class Animation extends Phaser.Scene {
 
     // create game objects
 
-    //boton de volver a saltar
-   /* const button = this.add.image(350, 600, "saltar").setInteractive();
-
-    button.on("pointerover", () => {
-      this.game.canvas.style.cursor = "pointer";
-    });
-
-    button.on("pointerout", () => {
-      this.game.canvas.style.cursor = "default";
-    });
-
-    button.on("pointerdown", () => {
-      this.game.canvas.style.cursor = "default";
-      this.scene.start("story");
-    });*/
-
-  
+   
      this.story1 = this.add.image(200, 310, "story3");
     
      // Desvanecer story1 y mostrar story2 después de segundos

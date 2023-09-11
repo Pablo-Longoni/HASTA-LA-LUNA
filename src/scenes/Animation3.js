@@ -4,7 +4,7 @@ export default class Animation extends Phaser.Scene {
   constructor() {
     // key of the scene
     // the key will be used to start the scene by other scenes
-    super("animation2");
+    super("animation3");
   }
 
   init() {
@@ -16,8 +16,8 @@ export default class Animation extends Phaser.Scene {
   }
   preload() { 
     
-    this.load.image("story4", "./public/images/story-4.png"); 
-    this.load.image("story5", "./public/images/story-5.png"); 
+    this.load.image("story6", "./public/images/story-6.png"); 
+    this.load.image("story7", "./public/images/story-7.png"); 
    
   }
 
@@ -26,7 +26,7 @@ export default class Animation extends Phaser.Scene {
     // create game objects
 
    
-     this.story5 = this.add.image(200, 310, "story5");
+     this.story5 = this.add.image(200, 310, "story6");
     
      // Desvanecer story1 y mostrar story2 después de segundos
      this.tweens.add({
@@ -38,11 +38,11 @@ export default class Animation extends Phaser.Scene {
        onComplete: () => {
          //  mostrar la imagen story2
          this.story5.setVisible(false);
-         this.story4 = this.add.image(200, 310, "story4");
+         this.story4 = this.add.image(200, 310, "story7");
 
          // Iniciar la escena story después de segundos
          setTimeout(() => {
-          this.scene.start("winner");
+          this.scene.start("story2");
         }, 1500); 
            },
          });

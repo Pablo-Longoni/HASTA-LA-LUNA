@@ -163,7 +163,7 @@ export default class Story extends Phaser.Scene {
     this.prevY = this.jugador.y;
   }
 
-  //comprobar si el jugador está cayendo
+  /*/comprobar si el jugador está cayendo
   if (this.jugador.y > this.prevY) {
     if (this.direction === "left") {
       this.jugador.anims.play("fall1", true); 
@@ -181,7 +181,7 @@ export default class Story extends Phaser.Scene {
   }
 
   // Actualizar la posición anterior con la posición actual 
-  this.prevY = this.jugador.y;
+  this.prevY = this.jugador.y;*/
 
   }
 
@@ -196,7 +196,7 @@ export default class Story extends Phaser.Scene {
     }
   
     esVencedor(jugador, salida) {
-      this.scene.start("story2");
+      this.scene.start("animation3");
     }
 
   }
